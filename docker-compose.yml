@@ -112,6 +112,24 @@ services:
 
 
   # =========================================================
+  # AI SERVICE
+  # =========================================================
+  ai-service:
+    build:
+      context: ./ai-service/ai-service
+      dockerfile: Dockerfile
+    container_name: ecommerce-ai-service
+    ports:
+      - "8089:8089"
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://ecommerce-service-registry:8761/eureka/
+    depends_on:
+      - ecommerce-service-registry
+    networks:
+      - ecommerce-network
+
+
+  # =========================================================
   # ORDER SERVICE
   # =========================================================
   order-service:

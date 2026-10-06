@@ -1,4 +1,5 @@
-package com.ecommerce.gateway.api_gateway.config;
+
+        package com.ecommerce.gateway.api_gateway.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,9 +33,16 @@ public class SecurityConfig {
                         // ==========================================
                         // PUBLIC PRODUCT IMAGES
                         // ==========================================
-                        .pathMatchers(HttpMethod.GET, "/uploads/products/**")
+                        .pathMatchers(
+                                HttpMethod.GET,
+                                "/uploads/products/**"
+                        )
                         .permitAll()
-                        .pathMatchers(HttpMethod.HEAD, "/uploads/products/**")
+
+                        .pathMatchers(
+                                HttpMethod.HEAD,
+                                "/uploads/products/**"
+                        )
                         .permitAll()
 
                         // ==========================================
@@ -61,6 +69,15 @@ public class SecurityConfig {
                         .pathMatchers(
                                 HttpMethod.GET,
                                 "/api/inventory/**"
+                        )
+                        .permitAll()
+
+                        // ==========================================
+                        // PUBLIC AI MESSAGE CLASSIFICATION
+                        // ==========================================
+                        .pathMatchers(
+                                HttpMethod.POST,
+                                "/api/messages/**"
                         )
                         .permitAll()
 
